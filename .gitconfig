@@ -1,34 +1,29 @@
-[core]
-	excludesfile = ~/.gitignore_global
-
-[include]
-    path = ~/.gitconfig.local
+[ghq]
+	root = ~/src
 
 [color]
-    ui = true
+  ui = true
 
 [pull]
   rebase = true
 
 [alias]
-co = checkout
-# checkout長い…
-st = status -sb
-br = branch
-# シンプルなstatus
-pr = pull --rebase
-# pull するときにmergeコミットを作らない
-fo = fetch origin
-ro = rebase origin
-# branchでfoしてroすればmasterにrebaseできる
-rc = rebase --continue
-wd = diff --word-diff
-# 単語単位のdiff
-lg = log --graph --pretty=oneline --decorate --date=short --abbrev-commit --branches
-# ログをtreeで表示(簡易tig)
-cm = commit -m
-gr = grep
-showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
-
-[ghq]
-	root = ~/src
+  co = checkout
+  cb = checkout -b
+  st = status -sb
+  br = branch
+  pr = pull --rebase
+  fo = fetch origin
+  ro = rebase origin
+  rc = rebase --continue
+  wd = diff --word-diff
+  lg = log --graph --pretty=oneline --decorate --date=short --abbrev-commit --branches
+  cm = commit -m
+  gr = grep
+  bd = branch -d
+  bdd = !git branch | grep -v master | grep -v stable | xargs git branch -d
+  bdf = !git branch | grep -v master | grep -v stable | xargs git branch -D
+  showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+[user]
+	name = nano041214
+	email = nano.041214@gmail.com
