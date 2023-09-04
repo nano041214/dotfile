@@ -1,0 +1,34 @@
+[core]
+	excludesfile = ~/.gitignore_global
+
+[include]
+    path = ~/.gitconfig.local
+
+[color]
+    ui = true
+
+[pull]
+  rebase = true
+
+[alias]
+co = checkout
+# checkout長い…
+st = status -sb
+br = branch
+# シンプルなstatus
+pr = pull --rebase
+# pull するときにmergeコミットを作らない
+fo = fetch origin
+ro = rebase origin
+# branchでfoしてroすればmasterにrebaseできる
+rc = rebase --continue
+wd = diff --word-diff
+# 単語単位のdiff
+lg = log --graph --pretty=oneline --decorate --date=short --abbrev-commit --branches
+# ログをtreeで表示(簡易tig)
+cm = commit -m
+gr = grep
+showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+
+[ghq]
+	root = ~/src
